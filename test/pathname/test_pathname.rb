@@ -1115,6 +1115,11 @@ class TestPathname < Test::Unit::TestCase
     end;
   end
 
+  def test_deconstruct
+    pathname = Pathname('dirname/basename')
+    assert_equal(pathname.deconstruct, ['dirname/basename'])
+  end
+
   def test_blockdev?
     with_tmpchdir('rubytest-pathname') {|dir|
       open("f", "w") {|f| f.write "abc" }

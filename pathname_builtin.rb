@@ -254,6 +254,16 @@ class Pathname
     end
   end
 
+  # Returns an Array with #to_s as the only element.
+  #
+  #   path = Pathname('dirname/basename')   # => #<Pathname:dirname/basename>
+  #   path in Pathname('dirname/basename')  # => true
+  #   path in Pathname('basename')          # => false
+  #   path in Pathname(/\bbasename\z/)      # => true
+  def deconstruct
+    [to_s]
+  end
+
   def hash # :nodoc:
     @path.hash
   end
